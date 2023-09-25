@@ -1,9 +1,12 @@
 ﻿@page "/"
 
-<PageTitle>Index</PageTitle>
+<p>Testar @test</p>
+<input @bind="value" />
+<input @bind="value2" />
+<placeholder>@value+@value2</placeholder>
 
-<h1>Hello, world!</h1>
-
-Welcome to your new app.
-
-<SurveyPrompt Title="How is Blazor working for you?" />
+@code{
+	string test = "GIT";
+	int? value = null;
+	int? value2 = null;
+}
