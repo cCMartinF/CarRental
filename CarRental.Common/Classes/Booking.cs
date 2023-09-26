@@ -11,8 +11,11 @@ public class Booking : IBooking
     public int kmReturned { get; init; }
     public DateTime? Rented { get; init; }
     public DateTime? Returned { get; init; }
-    public double? totalCost { get; }
+ 
 
-    public Booking(IVehicle Vehicle, ICustomer Customer, int nKmReturned, DateTime rented, DateTime returned, double nTotalCost) =>
-        (vehicle, customer, kmReturned, Rented, Returned, totalCost) = (Vehicle, Customer, nKmReturned, rented, returned, nTotalCost);
+    //    public Booking(IVehicle Vehicle, ICustomer Customer, int nKmReturned, DateTime rented) =>
+    //    (vehicle, customer, kmReturned, Rented) = (Vehicle, Customer, nKmReturned, rented);
+    //}
+    public Booking(IVehicle Vehicle, ICustomer Customer, int nKmReturned, DateTime rented, DateTime returned) =>
+    (vehicle, customer, kmReturned, Rented, Returned) = (Vehicle, Customer, nKmReturned, rented, returned);
 }

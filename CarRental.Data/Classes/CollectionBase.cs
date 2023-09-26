@@ -26,10 +26,18 @@ public class CollectionBase : IData
         _vehicles.Add(new Car("DEF456", "BMW", 2000, 1.5, VehicleType.Sedan, 200, VehicleStatus.Booked));
         _vehicles.Add(new Car("GHI789", "Suzuki", 20000, 2, VehicleType.Motorcycle, 300, VehicleStatus.Available));
         _vehicles.Add(new Car("JKL012", "Yamaha", 300, 3, VehicleType.Motorcycle, 400, VehicleStatus.Booked));
-        //_booking.Add(new Booking(_vehicles, _customer, 500, rentDateOne, )
+
+
+        //var carRentedOne = _vehicles.First();
+        //var carRentedTwo = _vehicles.
+        //_booking.Add(new Booking(IVehicle(Car()), _customer, 500, rentDateOne, returnedDate )
     }
-    
+
+    //IEnumerable<string> names = from person in people
+    //                            where person.Pets.All(pet => pet.Age > 5)
+    //                            select person.LastName;
+
     public IEnumerable<ICustomer> GetCustomers() => _customer;
-    public IEnumerable<IVehicle> GetVehicles(VehicleStatus status = default) => _vehicles;
+    public IEnumerable<IVehicle> GetVehicles(VehicleStatus status = VehicleStatus.Booked) => _vehicles;
     public IEnumerable<IBooking> GetBookings() => _booking;
 }
