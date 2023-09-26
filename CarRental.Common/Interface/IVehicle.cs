@@ -7,7 +7,7 @@ public interface IVehicle
     public string brand { get; init; }
     public double odometer { get; init; }
     public double costKM { get; init; }
-    public VehicleType type { get; init; }
+    public VehicleType Type { get; init; }
     public int costDay { get; init; }
-    public VehicleStatus status { get; init; }
+    public VehicleStatus Status { get; init; }
 }

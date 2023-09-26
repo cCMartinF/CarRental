@@ -4,7 +4,16 @@ namespace CarRental.Common.Classes;
 
 public class Customer : ICustomer
 {
-    public int sSD { get; init; }
+    public long sSD { get; init; }
     public string firstName { get; init; }
     public string lastName { get; init; }
+
+    public Customer(long nSSD, string nFirstName, string nLastName) =>
+        (sSD, firstName, lastName) = (nSSD, nFirstName, nLastName);
 }
+//    {
+//        this.sSD = sSD;
+//        this.firstName = firstName;
+//        this.lastName = lastName;
+//    }
+//}

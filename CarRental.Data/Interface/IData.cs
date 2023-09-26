@@ -1,9 +1,7 @@
-﻿
-
-using CarRental.Common.Enum;
+﻿using CarRental.Common.Enum;
 using CarRental.Common.Interface;
 
-namespace CarRental.Data;
+namespace CarRental.Data.Interface;
 
 public interface IData
 {
