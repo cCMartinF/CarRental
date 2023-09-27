@@ -18,4 +18,9 @@ public class Booking : IBooking
     //}
     public Booking(IVehicle Vehicle, ICustomer Customer, int nKmReturned, DateTime rented, DateTime returned) =>
     (vehicle, customer, kmReturned, Rented, Returned) = (Vehicle, Customer, nKmReturned, rented, returned);
+
+    void ReturnVehicle(IVehicle vehicle)
+    {
+        
+    }
 }
