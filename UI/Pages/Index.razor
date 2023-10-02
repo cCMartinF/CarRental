@@ -21,12 +21,12 @@
         @foreach (var vehicle in bp.GetVehicles())
         {
             <tr>
-                <td>@vehicle.regNr</td>
-                <td>@vehicle.brand</td>
-                <td>@vehicle.odometer</td>
-                <td>@vehicle.costKM</td>
+                <td>@vehicle.RegNr</td>
+                <td>@vehicle.Brand</td>
+                <td>@vehicle.Odometer</td>
+                <td>@vehicle.CostKM</td>
                 <td>@vehicle.Type</td>
-                <td>@vehicle.costDay</td>
+                <td>@vehicle.CostDay</td>
                 <td>@vehicle.Status</td>
             </tr>
         }
@@ -35,22 +35,26 @@
 <table class="table">
     <thead>
         <tr>
-            <th>Date</th>
-            <th>Temp. (C)</th>
-            <th>Temp. (F)</th>
-            <th>Summary</th>
+            <th>RegNr</th>
+            <th>Customer</th>
+            <th>Rented KM</th>
+            <th>Rented Date</th>
+            <th>Returned Date</th>
+            <th>Cost</th>
         </tr>
     </thead>
     <tbody>
-      @*   @foreach (var forecast in forecasts)
+        @foreach (var booking in bp.GetBookings())
         {
             <tr>
-                <td>@forecast.Date.ToShortDateString()</td>
-                <td>@forecast.TemperatureC</td>
-                <td>@forecast.TemperatureF</td>
-                <td>@forecast.Summary</td>
+                <td>@booking.Vehicle.RegNr</td>
+                <td>@booking.Customer.sSD @booking.Customer.firstName @booking.Customer.lastName</td>
+                <td>@booking.Vehicle.RentedKM</td>
+                <td>@String.Format($"{booking.Vehicle.Rented:d}")</td>
+                <td>@String.Format($"{booking.Returned:d}")</td>
+                <td>@booking.Cost</td>
             </tr>
-        } *@
+        }
     </tbody>
 </table>
 <br />

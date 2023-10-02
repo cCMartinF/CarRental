@@ -18,4 +18,9 @@ public class BookingProc
     {
         return _data.GetVehicles();
     }
+
+    public IEnumerable<IBooking> GetBookings()
+    {
+        return _data.GetBookings();
+    }
 }

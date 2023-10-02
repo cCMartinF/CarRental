@@ -3,11 +3,14 @@
 namespace CarRental.Common.Interface;
 public interface IVehicle
 {
-    public string regNr { get; init; }
-    public string brand { get; init; }
-    public double odometer { get; init; }
-    public double costKM { get; init; }
+
+    public string RegNr { get; init; }
+    public string Brand { get; init; }
+    public double Odometer { get; init; }
+    public double CostKM { get; init; }
     public VehicleType Type { get; init; }
-    public int costDay { get; init; }
+    public int CostDay { get; init; }
+    public double? RentedKM { get; init; }
+    public DateTime? Rented { get; init; }
     public VehicleStatus Status { get; init; }
 }

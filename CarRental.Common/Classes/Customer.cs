@@ -11,9 +11,3 @@ public class Customer : ICustomer
     public Customer(long nSSD, string nFirstName, string nLastName) =>
         (sSD, firstName, lastName) = (nSSD, nFirstName, nLastName);
 }
-//    {
-//        this.sSD = sSD;
-//        this.firstName = firstName;
-//        this.lastName = lastName;
-//    }
-//}

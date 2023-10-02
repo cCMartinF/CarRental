@@ -1,26 +1,35 @@
-﻿
-
-using CarRental.Common.Interface;
+﻿using CarRental.Common.Interface;
 
 namespace CarRental.Common.Classes;
 
 public class Booking : IBooking
 {
-    public IVehicle vehicle { get; init; }
-    public ICustomer customer { get; init; }
-    public int kmReturned { get; init; }
-    public DateTime? Rented { get; init; }
-    public DateTime? Returned { get; init; }
- 
+    public IVehicle Vehicle { get; init; }
+    public ICustomer Customer { get; init; }
+    public int? KmReturned { get; init; }
+    public double? Cost { get; set; }
+    public DateTime? Returned { get; set; }
 
-    //    public Booking(IVehicle Vehicle, ICustomer Customer, int nKmReturned, DateTime rented) =>
-    //    (vehicle, customer, kmReturned, Rented) = (Vehicle, Customer, nKmReturned, rented);
-    //}
-    public Booking(IVehicle Vehicle, ICustomer Customer, int nKmReturned, DateTime rented, DateTime returned) =>
-    (vehicle, customer, kmReturned, Rented, Returned) = (Vehicle, Customer, nKmReturned, rented, returned);
 
-    void ReturnVehicle(IVehicle vehicle)
+    public Booking(IVehicle vehicle, ICustomer customer, int? kmReturned)
     {
-        
+        this.Vehicle = vehicle;
+        this.Customer = customer;
+        this.KmReturned = kmReturned;
+        if(kmReturned != null)
+        ReturnVehicle(vehicle);
+    }
+
+
+    void ReturnVehicle(IVehicle Vehicle)
+    {
+        if (Vehicle.Rented != null)
+        {
+            Returned = DateTime.Now;
+            var diffOfDates = ((DateTime)Vehicle.Rented).Subtract(Returned);
+            Cost = diffOfDates.Days * Vehicle.CostDay + Vehicle.CostKM * KmReturned;
+        }
+        else
+            return;
     }
 }
