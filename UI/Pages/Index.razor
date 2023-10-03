@@ -4,8 +4,8 @@
 @inject CarRental.Business.Classes.BookingProc bp
 
 <h1>Vehicles</h1>
-<div class="myDiv">
-    <table class="table">
+<div>
+    <table class="table table-striped">
         <thead>
             <tr>
                 <th>RegNr</th>
@@ -21,12 +21,12 @@
             @foreach (var vehicle in bp.GetVehicles())
             {
                 <tr>
-                    <td>@vehicle.RegNr</td>
+                    <td><b>@vehicle.RegNr</b></td>
                     <td>@vehicle.Brand</td>
                     <td>@vehicle.Odometer</td>
-                    <td>@vehicle.CostKM</td>
+                    <td>@vehicle.CostKM $ / km</td>
                     <td>@vehicle.Type</td>
-                    <td>@vehicle.CostDay</td>
+                    <td>@vehicle.CostDay $</td>
                     @if ((int)vehicle.Status == 1)
                     {
                         <td class="table-danger"><b>@vehicle.Status</b></td>
@@ -51,25 +51,30 @@
                 <th>Rented KM</th>
                 <th>Rented Date</th>
                 <th>Returned Date</th>
-                <th>Cost</th>
+                <th>Days Rented</th>
+                <th>Cost $</th>
+                <th>Status</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var booking in bp.GetBookings())
             {
                 <tr>
-                    <td>@booking.Vehicle.RegNr</td>
-                    <td>@booking.Customer.sSD @booking.Customer.firstName @booking.Customer.lastName</td>
+                    <td><b>@booking.Vehicle.RegNr</b></td>
+                    <td><i>@booking.Customer.sSD</i> @booking.Customer.firstName @booking.Customer.lastName</td>
                     <td>@booking.Vehicle.RentedKM</td>
                     <td>@String.Format($"{booking.Vehicle.Rented:d}")</td>
                     <td>@String.Format($"{booking.Returned:d}")</td>
-                    <td>@booking.Cost</td>
                     @if (booking.Cost == null)
                     {
+                        <td><i>Not returned</i></td>
+                        <td>@booking.Cost</td>
                         <td class="table-danger"><b>Booked</b></td>
                     }
                     else
                     {
+                        <td>@booking.DaysRented</td>
+                        <td>@booking.Cost $</td>
                         <td class="table-success"><b>Returned</b></td>
 
                     }
@@ -93,7 +98,7 @@
             @foreach (var customer in bp.GetCustomers())
             {
                 <tr>
-                    <td>@customer.sSD</td>
+                    <td><i>@customer.sSD</i></td>
                     <td>@customer.firstName</td>
                     <td>@customer.lastName</td>
 

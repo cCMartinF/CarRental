@@ -8,6 +8,7 @@ public class Booking : IBooking
     public ICustomer Customer { get; init; }
     public int? KmReturned { get; init; }
     public double? Cost { get; set; }
+    public int DaysRented { get; set; }
     public DateTime? Returned { get; set; }
 
 
@@ -27,7 +28,8 @@ public class Booking : IBooking
         {
             Returned = DateTime.Now;
             var diffOfDates = Returned - Vehicle.Rented;
-            Cost = diffOfDates.Value.Days * Vehicle.CostDay + Vehicle.CostKM * KmReturned;
+            DaysRented = diffOfDates.Value.Days;
+            Cost = DaysRented * Vehicle.CostDay + Vehicle.CostKM * KmReturned;
         }
         else
             return;

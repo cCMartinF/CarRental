@@ -8,6 +8,7 @@ public interface IBooking
     public ICustomer Customer { get; init; }
     public int? KmReturned { get; init; }
     public double? Cost { get; set; }
+    public int DaysRented { get; set; }
     public DateTime? Returned {get; set; }
 
 

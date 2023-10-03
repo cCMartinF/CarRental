@@ -1,3 +1,9 @@
 ﻿.table{
     border: outset 5px black;
 }
+myDív {
+    border: outset 5px black;
+}
+thead{
+    background-color:cornsilk
+}

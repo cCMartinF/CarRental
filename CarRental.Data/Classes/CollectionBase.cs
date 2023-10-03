@@ -25,7 +25,7 @@ public class CollectionBase : IData
         _customer.Add(new Customer(6407070001, "Johan", "Lager"));
         _customer.Add(new Customer(9902020002, "Rikard", "Ipa"));
         //Vehicles
-        _vehicles.Add(new Car("ABC123", "Volvo", 10500, 2, VehicleType.Sedan, 100, 500, rentDateOne, VehicleStatus.Available));
+        _vehicles.Add(new Car("ABC123", "Volvo", 10500, 1.3124, VehicleType.Sedan, 100, 500, rentDateOne, VehicleStatus.Available));
         _vehicles.Add(new Car("DEF456", "BMW", 2000, 1.5, VehicleType.Sedan, 200, 800, rentDateTwo, VehicleStatus.Booked));
         _vehicles.Add(new Car("GHI789", "Suzuki", 20000, 2, VehicleType.Motorcycle, 300, null, null, VehicleStatus.Available));
         _vehicles.Add(new Car("JKL012", "Yamaha", 300, 3, VehicleType.Motorcycle, 400, null, null, VehicleStatus.Available));
