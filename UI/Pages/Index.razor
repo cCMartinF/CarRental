@@ -1,87 +1,106 @@
 ﻿@page "/"
 @using CarRental.Business.Classes
 @using CarRental.Common.Interface
-
 @inject CarRental.Business.Classes.BookingProc bp
 
 <h1>Vehicles</h1>
-<table class="table">
-    <thead>
-        <tr>
-            <th>RegNr</th>
-            <th>Brand</th>
-            <th>Odometer</th>
-            <th>CostKM</th>
-            <th>Type</th>
-            <th>costDay</th>
-            <th>Status</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var vehicle in bp.GetVehicles())
-        {
+<div class="myDiv">
+    <table class="table">
+        <thead>
             <tr>
-                <td>@vehicle.RegNr</td>
-                <td>@vehicle.Brand</td>
-                <td>@vehicle.Odometer</td>
-                <td>@vehicle.CostKM</td>
-                <td>@vehicle.Type</td>
-                <td>@vehicle.CostDay</td>
-                <td>@vehicle.Status</td>
+                <th>RegNr</th>
+                <th>Brand</th>
+                <th>Odometer</th>
+                <th>CostKM</th>
+                <th>Type</th>
+                <th>costDay</th>
+                <th>Status</th>
             </tr>
-        }
-    </tbody>
-</table>
-<table class="table">
-    <thead>
-        <tr>
-            <th>RegNr</th>
-            <th>Customer</th>
-            <th>Rented KM</th>
-            <th>Rented Date</th>
-            <th>Returned Date</th>
-            <th>Cost</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var booking in bp.GetBookings())
-        {
-            <tr>
-                <td>@booking.Vehicle.RegNr</td>
-                <td>@booking.Customer.sSD @booking.Customer.firstName @booking.Customer.lastName</td>
-                <td>@booking.Vehicle.RentedKM</td>
-                <td>@String.Format($"{booking.Vehicle.Rented:d}")</td>
-                <td>@String.Format($"{booking.Returned:d}")</td>
-                <td>@booking.Cost</td>
-            </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var vehicle in bp.GetVehicles())
+            {
+                <tr>
+                    <td>@vehicle.RegNr</td>
+                    <td>@vehicle.Brand</td>
+                    <td>@vehicle.Odometer</td>
+                    <td>@vehicle.CostKM</td>
+                    <td>@vehicle.Type</td>
+                    <td>@vehicle.CostDay</td>
+                    @if ((int)vehicle.Status == 1)
+                    {
+                        <td class="table-danger"><b>@vehicle.Status</b></td>
+                    }
+                    else
+                    {
+                        <td class="table-success"><b>@vehicle.Status</b></td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
 <br />
-
-<br />
-<table class="table">
-    <thead>
-        <tr>
-            <th>SSD</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var customer in bp.GetCustomers())
-        {
+<h1>Bookings</h1>
+<div>
+    <table class="table table-striped">
+        <thead>
             <tr>
-                <td>@customer.sSD</td>
-                <td>@customer.firstName</td>
-                <td>@customer.lastName</td>
-
+                <th>RegNr</th>
+                <th>Customer</th>
+                <th>Rented KM</th>
+                <th>Rented Date</th>
+                <th>Returned Date</th>
+                <th>Cost</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var booking in bp.GetBookings())
+            {
+                <tr>
+                    <td>@booking.Vehicle.RegNr</td>
+                    <td>@booking.Customer.sSD @booking.Customer.firstName @booking.Customer.lastName</td>
+                    <td>@booking.Vehicle.RentedKM</td>
+                    <td>@String.Format($"{booking.Vehicle.Rented:d}")</td>
+                    <td>@String.Format($"{booking.Returned:d}")</td>
+                    <td>@booking.Cost</td>
+                    @if (booking.Cost == null)
+                    {
+                        <td class="table-danger"><b>Booked</b></td>
+                    }
+                    else
+                    {
+                        <td class="table-success"><b>Returned</b></td>
 
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<br />
+<h1>Customer</h1>
+<div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>SSD</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var customer in bp.GetCustomers())
+            {
+                <tr>
+                    <td>@customer.sSD</td>
+                    <td>@customer.firstName</td>
+                    <td>@customer.lastName</td>
 
-@code{
-	
-}
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
+

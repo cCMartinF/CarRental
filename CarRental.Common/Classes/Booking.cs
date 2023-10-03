@@ -26,8 +26,8 @@ public class Booking : IBooking
         if (Vehicle.Rented != null)
         {
             Returned = DateTime.Now;
-            var diffOfDates = ((DateTime)Vehicle.Rented).Subtract(Returned);
-            Cost = diffOfDates.Days * Vehicle.CostDay + Vehicle.CostKM * KmReturned;
+            var diffOfDates = Returned - Vehicle.Rented;
+            Cost = diffOfDates.Value.Days * Vehicle.CostDay + Vehicle.CostKM * KmReturned;
         }
         else
             return;
