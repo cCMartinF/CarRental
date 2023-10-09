@@ -14,10 +14,29 @@
                 <th>CostKM</th>
                 <th>Type</th>
                 <th>costDay</th>
+                <th>Action</th>
                 <th>Status</th>
             </tr>
         </thead>
         <tbody>
+            <tr>
+                <td><input placeholder="RegNr"/></td>
+                <td><input placeholder="Brand" /></td>
+                <td><input /></td>
+                <td><input /></td>
+                @* <td><select>
+                    <option selected>
+                        Type
+                    </option>
+                    @foreach (var vehicle in bp.GetVehicles())
+                        {
+                            <option @*bindValueHere>@vehicle.Type</option>
+                        }
+                </select></td> *@
+                <td></td>
+                <td><button>Add</button></td>
+                <td></td>
+            </tr>
             @foreach (var vehicle in bp.GetVehicles())
             {
                 <tr>
